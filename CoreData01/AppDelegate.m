@@ -7,8 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "UserInfo.h"
 
+//12121
 @implementation AppDelegate
+
+
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -20,8 +24,94 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [self addUser] ;
+    //查找数据
+    [self gainDatas] ;
     return YES;
 }
+
+//添加
+-(void)addUser
+{
+    for (int i  = 0 ; i < 10; i++)
+    {
+        //NSEntityDescription 实体描述对象
+        UserInfo * userInfo  = [NSEntityDescription insertNewObjectForEntityForName:@"UserInfo"
+                                                              inManagedObjectContext:self.managedObjectContext];
+        userInfo.name = [NSString stringWithFormat:@"baobao_%d",i];
+        NSLog(@"name = %@",userInfo.name);
+        userInfo.pass = @"password3";
+        
+        NSError *error = nil;
+        //会将类对象的内容转换为数据库中的数据存储到数据库中
+        if (![self.managedObjectContext save:&error])
+        {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+        
+        NSLog(@"add success");
+    }
+}
+//查询
+-(void)gainDatas
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:@"UserInfo" inManagedObjectContext:self.managedObjectContext]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd]'baobao_1'"];//查询条件
+    // NSPredicate *predicate = [NSPredicate predicateWithFormat:@"password='password3'"];//查询条件
+    
+    NSMutableArray *sortDescriptors = [NSMutableArray array];    //排序用
+    [sortDescriptors addObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] ];  //排序用
+    
+    [fetchRequest setPredicate:predicate];  //查询条件
+    [fetchRequest setFetchBatchSize:5];     //分页
+    [fetchRequest setSortDescriptors:sortDescriptors];  //排序
+    [fetchRequest setReturnsObjectsAsFaults:NO];
+    [fetchRequest setPropertiesToFetch:[NSArray arrayWithObjects:@"name", @"pass", nil]];  //查询的字段，一般不需要
+    NSError *error = nil;
+    NSArray *fetchedItems = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (fetchedItems == nil) {
+        NSLog(@"fetch request resulted in an error %@, %@", error, [error userInfo]);
+    }
+    else
+    {
+        NSLog(@"fetchedItems=%d",fetchedItems.count);
+        for (UserInfo *user in fetchedItems)
+        {
+            NSLog(@"user.authour=%@",user.name);
+             [self deleteUser:user];  //删除
+            // [self updateUser:user];  //更新
+        }
+    }
+}
+//删除：NSManagedObject对象必须先取出来，用managedObjectContext删除，保存就好
+-(void)deleteUser:(id)user
+{
+    [self.managedObjectContext deleteObject:user];
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error])
+    {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    NSLog(@"delete success");
+}
+//更新：直接修改对象，保存managedObjectContext就好
+-(void)updateUser:(UserInfo*)user{
+    user.name = @"baobao";   //修改后，直接保存managedObjectContext就可以了
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    NSLog(@"update success");
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

@@ -22,6 +22,9 @@
 		BCFF6B7819E527BA00C1A531 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFF6B5C19E527BA00C1A531 /* CoreData.framework */; };
 		BCFF6B8019E527BA00C1A531 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCFF6B7E19E527BA00C1A531 /* InfoPlist.strings */; };
 		BCFF6B8219E527BA00C1A531 /* CoreData01Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFF6B8119E527BA00C1A531 /* CoreData01Tests.m */; };
+		BCFF6B8D19E5298800C1A531 /* DataModel02.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BCFF6B8B19E5298800C1A531 /* DataModel02.xcdatamodeld */; };
+		BCFF6B9019E529B400C1A531 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFF6B8F19E529B400C1A531 /* UserInfo.m */; };
+		BCFF6B9319E52EFA00C1A531 /* MusicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFF6B9219E52EFA00C1A531 /* MusicItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		BCFF6B7D19E527BA00C1A531 /* CoreData01Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoreData01Tests-Info.plist"; sourceTree = "<group>"; };
 		BCFF6B7F19E527BA00C1A531 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BCFF6B8119E527BA00C1A531 /* CoreData01Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreData01Tests.m; sourceTree = "<group>"; };
+		BCFF6B8C19E5298800C1A531 /* DataModel02.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel02.xcdatamodel; sourceTree = "<group>"; };
+		BCFF6B8E19E529B400C1A531 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		BCFF6B8F19E529B400C1A531 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		BCFF6B9119E52EFA00C1A531 /* MusicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicItem.h; sourceTree = "<group>"; };
+		BCFF6B9219E52EFA00C1A531 /* MusicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,11 @@
 				BCFF6B6819E527BA00C1A531 /* AppDelegate.m */,
 				BCFF6B6D19E527BA00C1A531 /* Images.xcassets */,
 				BCFF6B6A19E527BA00C1A531 /* CoreData01.xcdatamodeld */,
+				BCFF6B9119E52EFA00C1A531 /* MusicItem.h */,
+				BCFF6B9219E52EFA00C1A531 /* MusicItem.m */,
+				BCFF6B8E19E529B400C1A531 /* UserInfo.h */,
+				BCFF6B8F19E529B400C1A531 /* UserInfo.m */,
+				BCFF6B8B19E5298800C1A531 /* DataModel02.xcdatamodeld */,
 				BCFF6B5F19E527BA00C1A531 /* Supporting Files */,
 			);
 			path = CoreData01;
@@ -249,7 +262,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCFF6B6919E527BA00C1A531 /* AppDelegate.m in Sources */,
+				BCFF6B8D19E5298800C1A531 /* DataModel02.xcdatamodeld in Sources */,
+				BCFF6B9319E52EFA00C1A531 /* MusicItem.m in Sources */,
 				BCFF6B6C19E527BA00C1A531 /* CoreData01.xcdatamodeld in Sources */,
+				BCFF6B9019E529B400C1A531 /* UserInfo.m in Sources */,
 				BCFF6B6519E527BA00C1A531 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +486,16 @@
 			);
 			currentVersion = BCFF6B6B19E527BA00C1A531 /* CoreData01.xcdatamodel */;
 			path = CoreData01.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		BCFF6B8B19E5298800C1A531 /* DataModel02.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BCFF6B8C19E5298800C1A531 /* DataModel02.xcdatamodel */,
+			);
+			currentVersion = BCFF6B8C19E5298800C1A531 /* DataModel02.xcdatamodel */;
+			path = DataModel02.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
